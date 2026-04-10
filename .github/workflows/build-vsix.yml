@@ -1,0 +1,75 @@
+name: Build VSIX
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - trunk
+    tags:
+      - "v*"
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build extension package
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: utilities/package-lock.json
+
+      - name: Install utility dependencies
+        run: npm ci
+        working-directory: utilities
+
+      - name: Install vsce
+        run: npm install -g @vscode/vsce
+
+      - name: Regenerate syntax and examples
+        run: |
+          make syntax
+          make examples
+
+      - name: Lint generators
+        run: make lint
+
+      - name: Build VSIX
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          vsce package --out extended-embedded-languages-${VERSION}.vsix
+
+      - name: Upload VSIX artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: vsix
+          path: "*.vsix"
+
+  release:
+    name: Attach VSIX to GitHub Release
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download VSIX artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: vsix
+          path: dist
+
+      - name: Publish release assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.vsix

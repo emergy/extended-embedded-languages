@@ -77,7 +77,7 @@ const HOST_LANGUAGE_SPECS = [
     },
     {
         file: 'yaml.embedded.tmLanguage.json',
-        root_scopes: ['source.yaml', 'text.yaml.jinja'],
+        root_scopes: ['source.yaml', 'text.yaml.jinja', 'source.ansible'],
         syntax_builder: buildYamlSyntax,
         vsname: 'yaml',
         embedded_scope: 'source.yaml.embedded.codeblock',

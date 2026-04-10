@@ -761,6 +761,31 @@
               "name": "punctuation.definition.string.end.python"
             }
           }
+        },
+        {
+          "comment": "Jinja-formatted triple-quoted strings",
+          "name": "string.quoted.multi.embedded.python",
+          "begin": "(?x)\n( (?i:u|r|f|rf|fr|) )\n('''|\"\"\")\n(?= (?i:\\{\\#jinja) \\b )",
+          "end": "(\\2)",
+          "contentName": "meta.embedded.block.jinja.python text.jinja",
+          "patterns": [
+            {
+              "include": "text.jinja"
+            }
+          ],
+          "beginCaptures": {
+            "1": {
+              "name": "storage.type.string.python"
+            },
+            "2": {
+              "name": "punctuation.definition.string.begin.python"
+            }
+          },
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.definition.string.end.python"
+            }
+          }
         }
       ]
     }

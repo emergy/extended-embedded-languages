@@ -370,5 +370,17 @@
       "\t$0",
       ""
     ]
+  },
+  "Jinja code block (string)": {
+    "scope": "powershell",
+    "prefix": [
+      "jinja"
+    ],
+    "description": "Insert a Jinja code block string",
+    "body": [
+      "<#jinja#> @\"",
+      "\t$0",
+      ""
+    ]
   }
 }

@@ -370,5 +370,17 @@
       "\t$0",
       ")md\""
     ]
+  },
+  "Jinja code block (string)": {
+    "scope": "cpp",
+    "prefix": [
+      "jinja"
+    ],
+    "description": "Insert a Jinja code block string",
+    "body": [
+      "R\"jinja(",
+      "\t$0",
+      ")jinja\""
+    ]
   }
 }

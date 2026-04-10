@@ -671,6 +671,28 @@
               "name": "punctuation.definition.string.end.toml"
             }
           }
+        },
+        {
+          "comment": "Jinja-formatted triple-quoted strings",
+          "name": "string.quoted.multi.embedded.toml",
+          "begin": "(?x)\n(''') \n(?= (?i:\\{\\#jinja) \\b )",
+          "end": "(\\1)",
+          "contentName": "meta.embedded.block.jinja.toml text.jinja",
+          "patterns": [
+            {
+              "include": "text.jinja"
+            }
+          ],
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.string.begin.toml"
+            }
+          },
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.definition.string.end.toml"
+            }
+          }
         }
       ]
     }

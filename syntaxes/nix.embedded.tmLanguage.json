@@ -786,6 +786,31 @@
               "name": "punctuation.definition.string.other.end.nix"
             }
           }
+        },
+        {
+          "comment": "Jinja-formatted strings",
+          "begin": "(/\\*(?i:jinja|j2)\\*/)\\s*(\\'\\')",
+          "end": "\\'\\'(?!\\$|\\'|\\\\.)",
+          "contentName": "meta.embedded.block.jinja.nix text.jinja",
+          "patterns": [
+            {
+              "include": "text.jinja"
+            }
+          ],
+          "name": "string.quoted.other.nix",
+          "beginCaptures": {
+            "1": {
+              "name": "comment.block.nix"
+            },
+            "2": {
+              "name": "punctuation.definition.string.other.start.nix"
+            }
+          },
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.other.end.nix"
+            }
+          }
         }
       ]
     }

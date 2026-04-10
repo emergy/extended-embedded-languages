@@ -1,0 +1,23 @@
+{
+  "name": "Extended Embedded Languages Dev",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-22-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts"
+    }
+  },
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y make && npm install -g @vscode/vsce && cd utilities && npm install",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "ms-vscode.extension-test-runner"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "eslint.workingDirectories": ["utilities"]
+      }
+    }
+  },
+  "remoteUser": "node"
+}

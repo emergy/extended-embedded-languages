@@ -941,6 +941,36 @@
               "name": "string.quoted.single.heredoc.powershell punctuation.definition.string.end.powershell"
             }
           }
+        },
+        {
+          "comment": "Jinja-formatted raw strings",
+          "begin": "(?x)\n( (<\\#) \\s* \n(?i:jinja|j2)\n\\s* (\\#>) )\n\\s* (@['\"])\n\\s*$",
+          "end": "^(['\"]@)",
+          "contentName": "meta.embedded.block.jinja.powershell text.jinja",
+          "patterns": [
+            {
+              "include": "text.jinja"
+            }
+          ],
+          "beginCaptures": {
+            "1": {
+              "name": "comment.block.powershell"
+            },
+            "2": {
+              "name": "punctuation.definition.comment.block.begin.powershell"
+            },
+            "3": {
+              "name": "punctuation.definition.comment.block.end.powershell"
+            },
+            "4": {
+              "name": "string.quoted.single.heredoc.powershell punctuation.definition.string.begin.powershell"
+            }
+          },
+          "endCaptures": {
+            "1": {
+              "name": "string.quoted.single.heredoc.powershell punctuation.definition.string.end.powershell"
+            }
+          }
         }
       ]
     }

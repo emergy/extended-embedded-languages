@@ -471,6 +471,36 @@ This is a (paragraph)[http://example.com] of text in **bold** and *italic*.
 )md";
 
 
+//////////////////////////////////////////////////////////////////////
+// Jinja Example
+static const char* jinja_string = R"jinja(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ title }}</title>
+</head>
+<body>
+    {# This is a Jinja comment #}
+    <h1>{{ heading }}</h1>
+
+    {% if users %}
+    <ul>
+        {% for user in users %}
+        <li>{{ user.name }} &mdash; {{ user.email }}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No users found.</p>
+    {% endif %}
+
+    {% set count = users | length %}
+    <p>Total: {{ count }}</p>
+</body>
+</html>
+
+)jinja";
+
+
 
 
 //////////////////////////////////////////////////////////////////////

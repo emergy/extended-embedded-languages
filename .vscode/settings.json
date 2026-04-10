@@ -1,0 +1,12 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^cd /workspaces/extended-embedded-languages && make syntax 2>&1$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^cd /workspaces/extended-embedded-languages && make examples 2>&1$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}

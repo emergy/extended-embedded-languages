@@ -1096,6 +1096,41 @@
               "name": "meta.embedded.block.Markdown.github-actions-workflow text.html.markdown"
             }
           ]
+        },
+        {
+          "comment": "Jinja-formatted block scalar strings",
+          "name": "string.quoted.multi.embedded.yaml",
+          "begin": "(?x)\n(?:(\\|)|(>)) ([1-9])? ([-+])? \\s* \n( \\# (?i:jinja|j2) ) \\b \\s* \\n?",
+          "beginCaptures": {
+            "1": {
+              "name": "keyword.control.flow.block-scalar.literal.yaml"
+            },
+            "2": {
+              "name": "keyword.control.flow.block-scalar.folded.yaml"
+            },
+            "3": {
+              "name": "constant.numeric.indentation-indicator.yaml"
+            },
+            "4": {
+              "name": "storage.modifier.chomping-indicator.yaml"
+            },
+            "5": {
+              "name": "meta.encoding.yaml"
+            }
+          },
+          "end": "^(?=\\S)|(?!\\G)",
+          "patterns": [
+            {
+              "begin": "(?>^|\\\\G)([ ]+)(?! )",
+              "end": "^(?!\\1|\\s*$)",
+              "patterns": [
+                {
+                  "include": "text.jinja"
+                }
+              ],
+              "name": "meta.embedded.block.jinja.github-actions-workflow text.jinja"
+            }
+          ]
         }
       ]
     }
