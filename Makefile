@@ -5,10 +5,10 @@
 all: lint examples syntax
 
 lint:
-	cd utilities ; eslint .
+	cd utilities ; npx eslint .
 
 fix:
-	cd utilities ; eslint --fix .
+	cd utilities ; npx eslint --fix .
 
 setup:
 	sudo npm install -g @vscode/vsce
