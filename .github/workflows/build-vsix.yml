@@ -44,15 +44,13 @@ jobs:
         run: make lint
 
       - name: Build VSIX
-        run: |
-          VERSION=$(node -p "require('./package.json').version")
-          vsce package --out extended-embedded-languages-${VERSION}.vsix
+        run: vsce package --out extended-embedded-languages.vsix
 
       - name: Upload VSIX artifact
         uses: actions/upload-artifact@v4
         with:
           name: vsix
-          path: "*.vsix"
+          path: extended-embedded-languages.vsix
 
   release:
     name: Attach VSIX to GitHub Release

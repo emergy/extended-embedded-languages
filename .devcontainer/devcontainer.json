@@ -6,7 +6,7 @@
       "version": "lts"
     }
   },
-  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y make && npm install -g @vscode/vsce && cd utilities && npm install",
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y make && npm install -g @vscode/vsce && cd utilities && npm install && cd .. && if curl -fsSL \"https://github.com/emergy/extended-embedded-languages/releases/latest/download/extended-embedded-languages.vsix\" -o /tmp/extended-embedded-languages.vsix; then code --install-extension /tmp/extended-embedded-languages.vsix; else echo \"No public release asset found yet, skipping VSIX install\"; fi",
   "customizations": {
     "vscode": {
       "extensions": [
@@ -15,7 +15,9 @@
       ],
       "settings": {
         "editor.formatOnSave": true,
-        "eslint.workingDirectories": ["utilities"]
+        "eslint.workingDirectories": [
+          "utilities"
+        ]
       }
     }
   },
